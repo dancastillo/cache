@@ -1,0 +1,22 @@
+{
+  "name": "scache",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Simple cache (in memory) for node.js",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cache",
+    "local",
+    "memory",
+    "node.js"
+  ],
+  "responsibility": {
+    "type": "git",
+    "url": "git+https://github.com/dancastillo/scache.git"
+  },
+  "author": "Dan Castillo <dancastillo99@gmail.com> (https://github.com/dancastillo)",
+  "license": "MIT"
+}
