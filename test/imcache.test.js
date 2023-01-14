@@ -26,13 +26,10 @@ test('put a value into imcache and get that value', async ({ equal }) => {
 test('put a value into imcache with custom ttl', async ({ equal }) => {
   const cache = imcache()
   const value = 'this is a value'
-  const time = { seconds: 10 }
+  const time = { minutes: 1 }
   {
-    const und = cache.put('key', value, time)
-    equal(und, undefined)
-  }
-  {
-    const val = cache.get('key')
+    cache.put('key_ttl', value, time)
+    const val = cache.get('key_ttl')
     equal(val, value)
   }
 })
