@@ -10,7 +10,7 @@ const ARGS_SCHEMA = {
   }
 }
 
-function imcache (opts) {
+function cache (opts) {
   opts = opts || {}
 
   validate(opts, ARGS_SCHEMA)
@@ -57,7 +57,7 @@ function imcache (opts) {
   const keys = function () {
     return Object.keys(_cache)
   }
-  const imcache = {
+  const cache = {
     ttl,
     getTime,
     get,
@@ -67,9 +67,9 @@ function imcache (opts) {
     keys
   }
 
-  return imcache
+  return cache
 }
 
-imcache.default = imcache
-imcache.imcache = imcache
-module.exports = imcache
+cache.default = cache
+cache.cache = cache
+module.exports = cache

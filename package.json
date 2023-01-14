@@ -1,9 +1,9 @@
 {
-  "name": "imcache",
-  "version": "0.0.1",
+  "name": "@dancastillo/cache",
+  "version": "0.0.2",
   "private": false,
-  "description": "Simple in memory cache for node.js",
-  "main": "imcache.js",
+  "description": "In memory cache for node.js",
+  "main": "cache.js",
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
@@ -11,7 +11,7 @@
     "test:unit": "tap test/**/*.test.js",
     "test:typescript": "tsd",
     "test:smoke": "smoker smoke",
-    "smoke": "node ./imcache.js"
+    "smoke": "node ./cache.js"
   },
   "keywords": [
     "simple",
@@ -21,11 +21,11 @@
   ],
   "responsibility": {
     "type": "git",
-    "url": "git+https://github.com/dancastillo/imcache.git"
+    "url": "git+https://github.com/dancastillo/cache.git"
   },
   "author": "Dan Castillo <dancastillo99@gmail.com> (https://github.com/dancastillo)",
   "license": "MIT",
-  "homepage": "https://github.com/dancastillo/imcache#readme",
+  "homepage": "https://github.com/dancastillo/cache#readme",
   "devDependencies": {
     "midnight-smoker": "^2.0.1",
     "standard": "^17.0.0",
