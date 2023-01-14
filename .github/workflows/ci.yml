@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+      - '*.md'
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - '*.md'
+
+jobs:
+  test:
+    uses: dancastillo/workflows/.github/workflows/review-test-automerge-ci.yml@main
