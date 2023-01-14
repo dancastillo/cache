@@ -1,33 +1,33 @@
-# imcache
+# cache
 
 In-Memory cache for node.js
 
 ### Install
 
-To install imcache in an existing project as a dependency:
+To install cache in an existing project as a dependency:
 
 Install with npm:
 ```sh
-npm install imcache
+npm install @dancastillo/cache
 ```
 Install with yarn:
 ```sh
-yarn add imcache
+yarn add @dancastillo/cache
 ```
 Install with pnpm:
 ```sh
-pnpm install imcache
+pnpm install @dancastillo/cache
 ```
 
 ### Example
 
 ```js
 // ESM
-import imcache from 'imcache'
-const cache = new imcache()
+import * as Cache from 'cache'
+const cache = new Cache()
 
 // CommonJs
-const imcache = require('imcache')()
+const cache = require('cache')()
 ```
 ## Configuration
 
@@ -45,7 +45,7 @@ const duration = {
   seconds: 30
 }
 
-const cache = imcache({ duration })
+const cache = cache({ duration })
 ```
 
 - `duration`: This is used to add a time to live for the cache data. This option is optional.
@@ -58,7 +58,7 @@ const cache = imcache({ duration })
 
 get
 ```js
-const value = imcache.get('foo') // bar
+const value = cache.get('foo') // bar
 ```
 
 - `get(key): any`: Used to get a value stored in cache
@@ -66,11 +66,11 @@ const value = imcache.get('foo') // bar
 
 put
 ```js
-imcache.put('foo', 'bar')
+cache.put('foo', 'bar')
 
 // with duration
 const duration = { hours: 12 }
-imcache.put('foo', 'bar', duration)
+cache.put('foo', 'bar', duration)
 ```
 
 - `put(key, value, DurationOptions): void`: Used to get a value stored in cache.
@@ -80,7 +80,7 @@ imcache.put('foo', 'bar', duration)
 
 del
 ```js
-imcache.del('foo')
+cache.del('foo')
 ```
 
 - `del(key): void`: Used to delete a value stored in cache
@@ -88,14 +88,14 @@ imcache.del('foo')
 
 clear
 ```js
-imcache.clear()
+cache.clear()
 ```
 
 - `clear(): void`: Used to delete all values stored in cache
 
 keys
 ```js
-imcache.keys()
+cache.keys()
 ```
 
 - `keys(): string[]`: Used to retrieve all the keys in cache.

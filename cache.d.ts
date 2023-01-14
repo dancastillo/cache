@@ -40,7 +40,7 @@ export type ClearFn = () => void
  */
 export type KeysFn = () => string[]
 
-export type imcacheInstance = {
+export type cacheInstance = {
   ttl: number | undefined
   getTime: GetTimeFn
   get: GetFn
@@ -54,7 +54,7 @@ export type Options = {
   duration?: DurationOptions
 }
 
-declare namespace imcache {
+declare namespace cache {
 
 
   export interface Options {
@@ -62,12 +62,12 @@ declare namespace imcache {
   }
 
   export const Options: Options
-  export const imcache: imcacheInstance
-  export { imcache as default }
+  export const cache: cacheInstance
+  export { cache as default }
 }
 
-declare function imcache(): imcacheInstance
+declare function cache(): cacheInstance
 
-declare function imcache(options: imcache.Options): imcacheInstance
+declare function cache(options: cache.Options): cacheInstance
 
-export default imcache
+export default cache
