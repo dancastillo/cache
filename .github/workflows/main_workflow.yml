@@ -1,0 +1,22 @@
+name: Develop <> Main Gitflow
+
+on: workflow_dispatch
+
+jobs:
+  syncStage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout main
+        uses: actions/checkout@v3
+        with:
+          ref: "main"
+
+      - id: merge
+        name: Merge develop into main
+        run: |
+          git remote update
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git fetch origin develop:develop
+          git merge develop
+          git push
