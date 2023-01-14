@@ -73,5 +73,3 @@ function imcache (opts) {
 imcache.default = imcache
 imcache.imcache = imcache
 module.exports = imcache
-// module.exports.default = imcache
-// module.exports.imcache = imcache
