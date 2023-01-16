@@ -3,12 +3,17 @@
 const { test } = require('tap')
 const { duration } = require('../lib/duration')
 
-test('duration undefined is returned with empty object as args', async ({ equal }) => {
-  equal(duration(), undefined)
+test('default duration of one day is returned with empty object as args', async ({ equal }) => {
+  equal(duration(), 86400)
 })
 
-test('duration undefined is returned with undefined as args', async ({ equal }) => {
-  equal(duration(), undefined)
+test('default duration of one day is returned with undefined as args', async ({ equal }) => {
+  equal(duration(), 86400)
+})
+
+test('duration 0is returned with all args', async ({ equal }) => {
+  const opts = { days: 0, hours: 0, minutes: 0, seconds: 0 }
+  equal(duration(opts), 0)
 })
 
 test('duration 1 second is returned with all args', async ({ equal }) => {
