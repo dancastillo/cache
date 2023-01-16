@@ -1,3 +1,8 @@
+export type CacheItem = {
+  value: any
+  expires: number
+}
+
 export type DurationOptions = {
   days?: number
   hours?: number
@@ -22,7 +27,7 @@ export type GetFn = (key: string) => any
  * @param [DurationOptions] time duration to store value under key
  * @returns [void]
  */
-export type PutFn = (key: string, value: any, time?: DurationOptions) => void
+export type SetFn = (key: string, value: any, time?: DurationOptions) => void
 
 /**
  * @param [string] key to delete value from
@@ -40,34 +45,47 @@ export type ClearFn = () => void
  */
 export type KeysFn = () => string[]
 
+export type SizeFn = () => number
+
+export type LRUFn = () =>  CacheItem | undefined
+
+export type MRUFn = () => CacheItem | undefined
+
 export type cacheInstance = {
   ttl: number | undefined
   getTime: GetTimeFn
   get: GetFn
-  put: PutFn
+  set: SetFn
   del: DelFn
   clear: ClearFn
   keys: KeysFn
+  size: SizeFn
+  lru: LRUFn
+  mru: MRUFn
 }
 
-export type Options = {
+export type CacheOptions = {
   duration?: DurationOptions
+  max?: number
+  strategy?: 'lru' | 'mru'
 }
 
 declare namespace cache {
 
 
-  export interface Options {
-    duration?: DurationOptions
-  }
+  // export interface Options {
+  //   duration?: DurationOptions
+  //   max?: number
+  //   strategy?: 'lru' | 'mru'
+  // }
 
-  export const Options: Options
+  // export const Options: Options
   export const cache: cacheInstance
   export { cache as default }
 }
 
 declare function cache(): cacheInstance
 
-declare function cache(options: cache.Options): cacheInstance
+declare function cache(options: CacheOptions): cacheInstance
 
 export default cache
