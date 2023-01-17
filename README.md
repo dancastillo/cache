@@ -64,16 +64,16 @@ const value = cache.get('foo') // bar
 - `get(key): any`: Used to get a value stored in cache
   - `key`: string 
 
-put
+set
 ```js
-cache.put('foo', 'bar')
+cache.set('foo', 'bar')
 
 // with duration
 const duration = { hours: 12 }
-cache.put('foo', 'bar', duration)
+cache.set('foo', 'bar', duration)
 ```
 
-- `put(key, value, DurationOptions): void`: Used to get a value stored in cache.
+- `set(key, value, DurationOptions): void`: Used to get a value stored in cache.
   - `key`: string
   - `value`: any
   - `DurationOptions`: [here](#DurationOptions)
@@ -100,6 +100,20 @@ cache.keys()
 
 - `keys(): string[]`: Used to retrieve all the keys in cache.
 
+
+lru
+```js
+cache.lru()
+```
+
+- `lru(): value`: To retrieve the lru cache item
+
+mru
+```js
+cache.mru()
+```
+
+- `mru(): value`: To retrieve the mru cache item
 
 ## License
 

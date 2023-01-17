@@ -71,15 +71,6 @@ export type CacheOptions = {
 }
 
 declare namespace cache {
-
-
-  // export interface Options {
-  //   duration?: DurationOptions
-  //   max?: number
-  //   strategy?: 'lru' | 'mru'
-  // }
-
-  // export const Options: Options
   export const cache: cacheInstance
   export { cache as default }
 }
