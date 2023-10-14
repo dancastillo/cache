@@ -13,3 +13,6 @@ on:
 jobs:
   test:
     uses: dancastillo/workflows/.github/workflows/review-test-automerge-ci.yml@main
+  benchmark:
+    uses: dancastillo/workflows/.github/workflows/benchmark-ci.yml@main
+
