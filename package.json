@@ -11,7 +11,8 @@
     "test:unit": "tap test/**/*.test.js",
     "test:typescript": "tsd",
     "test:smoke": "smoker smoke",
-    "smoke": "node ./cache.js"
+    "smoke": "node ./cache.js",
+    "test:benchmark": "node ./benchmark/benchmark.js"
   },
   "keywords": [
     "simple",
