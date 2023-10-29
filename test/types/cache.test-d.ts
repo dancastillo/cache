@@ -1,6 +1,6 @@
 import { expectAssignable, expectType } from 'tsd';
-import cache,  { ClearFn, DelFn, GetFn, GetTimeFn, KeysFn, LRUFn, MRUFn, CacheOptions, SetFn, SizeFn, CacheItem, DurationOptions } from './cache.js'
-import { cacheInstance } from './cache.js'
+import cache,  { ClearFn, DelFn, GetFn, GetTimeFn, KeysFn, LRUFn, MRUFn, CacheOptions, SetFn, SizeFn, CacheItem, DurationOptions } from '../../cache.js'
+import { cacheInstance } from '../../cache.js'
 
 const testCache = cache()
 

@@ -4,6 +4,7 @@
   "private": false,
   "description": "In memory cache for node.js",
   "type": "module",
+  "types": "cache.d.ts",
   "exports": {
     "require": "./cache.cjs",
     "import": "./cache.js"
@@ -34,6 +35,9 @@
   "responsibility": {
     "type": "git",
     "url": "git+https://github.com/dancastillo/cache.git"
+  },
+  "tsd": {
+    "directory": "test/types"
   },
   "author": "Dan Castillo <dancastillo99@gmail.com> (https://github.com/dancastillo)",
   "license": "MIT",
