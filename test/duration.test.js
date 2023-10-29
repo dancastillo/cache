@@ -1,7 +1,5 @@
-'use strict'
-
-const { test } = require('tap')
-const { duration } = require('../lib/duration')
+import { test } from 'tap'
+import { duration } from '../lib/duration.js'
 
 test('default duration of one day is returned with empty object as args', async ({ equal }) => {
   equal(duration(), 86400)
