@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "description": "In memory cache for node.js",
+  "main": "cache.js",
   "type": "module",
   "types": "cache.d.ts",
   "exports": {
@@ -20,8 +21,8 @@
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "test": "npm run lint && npm run test:unit && npm run test:typescript && npm run test:smoke",
-    "test:unit": "tap test/**/*.test.*",
+    "test": "npm run lint && npm run test:unit && npm run test:typescript",
+    "test:unit": "c8 tap test/**/*.test.*",
     "test:typescript": "tsd",
     "test:smoke": "smoker smoke",
     "smoke": "node ./cache.js"
@@ -43,6 +44,7 @@
   "license": "MIT",
   "homepage": "https://github.com/dancastillo/cache#readme",
   "devDependencies": {
+    "c8": "^8.0.1",
     "midnight-smoker": "^7.0.4",
     "standard": "^17.0.0",
     "tap": "^16.3.3",
