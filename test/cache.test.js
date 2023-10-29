@@ -1,7 +1,5 @@
-'use strict'
-
-const { test } = require('tap')
-const cache = require('../cache')
+import { test } from 'tap'
+import { cache } from '../cache.js'
 
 const data = [{ key: 'one', value: 1 }, { key: 'two', value: 2 }, { key: 'three', value: 3 }]
 

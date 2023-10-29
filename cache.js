@@ -1,8 +1,6 @@
-'use strict'
-
-const constants = require('./lib/constants')
-const { duration } = require('./lib/duration')
-const { validate } = require('./lib/validate')
+import { constants } from './lib/constants.js'
+import { duration } from './lib/duration.js'
+import { validate } from './lib/validate.js'
 
 const ARGS_SCHEMA = {
   type: 'object',
@@ -106,6 +104,5 @@ function cache (opts) {
   return instance
 }
 
-cache.default = cache
-cache.cache = cache
-module.exports = cache
+export { cache }
+export default cache

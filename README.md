@@ -23,12 +23,19 @@ pnpm install @dancastillo/cache
 
 ```js
 // ESM
-import * as Cache from 'cache'
+import Cache from '@dancastillo/cache'
 const cache = new Cache()
-
-// CommonJs
-const cache = require('cache')()
+cache.set('foo', 'bar')
 ```
+
+```js
+// CommonJs
+const Cache = require('@dancastillo/cache')
+const cache = Cache()
+
+cache.set('foo', 'bar')
+```
+
 ## Configuration
 
 `scache(<options>)` accepts an options object.
