@@ -1,6 +1,6 @@
 {
   "name": "@dancastillo/cache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "In memory cache for node.js",
   "main": "cache.js",
@@ -13,7 +13,8 @@
   "files": [
     "lib",
     "cache.js",
-    "cache.d.ts"
+    "cache.d.ts",
+    "cache.cjs"
   ],
   "engines": {
     "node": ">=20.0.0"
