@@ -13,7 +13,8 @@
   "files": [
     "lib",
     "cache.js",
-    "cache.d.ts"
+    "cache.d.ts",
+    "cache.cjs"
   ],
   "engines": {
     "node": ">=20.0.0"
