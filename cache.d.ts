@@ -51,7 +51,7 @@ export type LRUFn = () =>  CacheItem | undefined
 
 export type MRUFn = () => CacheItem | undefined
 
-export type cacheInstance = {
+export interface cacheInstance {
   ttl: number | undefined
   getTime: GetTimeFn
   get: GetFn
@@ -70,22 +70,25 @@ export type CacheOptions = {
   strategy?: 'lru' | 'mru'
 }
 
-declare namespace cache {
-
-
-  // export interface Options {
-  //   duration?: DurationOptions
-  //   max?: number
-  //   strategy?: 'lru' | 'mru'
-  // }
-
-  // export const Options: Options
-  export const cache: cacheInstance
-  export { cache as default }
+declare class Cache {
+  constructor(options?: CacheOptions)
+  ttl: number | undefined
+  getTime: GetTimeFn
+  get: GetFn
+  set: SetFn
+  del: DelFn
+  clear: ClearFn
+  keys: KeysFn
+  size: SizeFn
+  lru: LRUFn
+  mru: MRUFn
 }
 
-declare function cache(): cacheInstance
+declare function Cache(): cacheInstance
 
-declare function cache(options: CacheOptions): cacheInstance
+declare function Cache(options: CacheOptions): cacheInstance
 
-export default cache
+export default Cache
+
+// @ts-ignore
+export = Cache

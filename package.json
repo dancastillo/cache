@@ -3,7 +3,6 @@
   "version": "1.0.1",
   "private": false,
   "description": "In memory cache for node.js",
-  "main": "cache.js",
   "type": "module",
   "types": "cache.d.ts",
   "exports": {
@@ -26,7 +25,8 @@
     "test:unit": "c8 tap test/**/*.test.*",
     "test:typescript": "tsd",
     "test:smoke": "smoker smoke",
-    "smoke": "node ./cache.js"
+    "smoke": "node ./cache.js",
+    "build:cjs": "rollup --config .rollup.config.js"
   },
   "keywords": [
     "simple",
@@ -47,6 +47,7 @@
   "devDependencies": {
     "c8": "^8.0.1",
     "midnight-smoker": "^7.0.4",
+    "rollup": "^4.3.0",
     "standard": "^17.0.0",
     "tap": "^16.3.3",
     "tsd": "^0.29.0"
