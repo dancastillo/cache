@@ -104,5 +104,4 @@ function cache (opts) {
   return instance
 }
 
-export { cache }
 export default cache
