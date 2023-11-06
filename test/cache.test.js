@@ -1,5 +1,5 @@
 import { test } from 'tap'
-import { cache } from '../cache.js'
+import cache from '../cache.js'
 
 const data = [{ key: 'one', value: 1 }, { key: 'two', value: 2 }, { key: 'three', value: 3 }]
 
