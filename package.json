@@ -46,7 +46,7 @@
   "homepage": "https://github.com/dancastillo/cache#readme",
   "devDependencies": {
     "c8": "^8.0.1",
-    "midnight-smoker": "^7.0.4",
+    "midnight-smoker": "^8.0.0",
     "rollup": "^4.3.0",
     "standard": "^17.0.0",
     "tap": "^16.3.3",
