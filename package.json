@@ -45,7 +45,7 @@
   "license": "MIT",
   "homepage": "https://github.com/dancastillo/cache#readme",
   "devDependencies": {
-    "c8": "^9.0.0",
+    "c8": "^10.0.0",
     "midnight-smoker": "^8.0.0",
     "rollup": "^4.3.0",
     "standard": "^17.0.0",
