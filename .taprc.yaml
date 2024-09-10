@@ -1,8 +1,0 @@
-coverage: false
-timeout: 480
-check-coverage: false
-
-reporter: terse
-
-files:
-  - 'test/**/*.test.js'
