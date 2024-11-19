@@ -1,5 +1,5 @@
-export type CacheItem = {
-  value: any
+export type CacheItem<T> = {
+  value: T
   expires: number
 }
 
@@ -10,85 +10,26 @@ export type DurationOptions = {
   seconds?: number
 }
 
-/**
- * @return [number] the current time in milliseconds
- */
-export type GetTimeFn = () => number
-
-/**
- * @param [string] key to get value from
- * @return [any]
- */
-export type GetFn = (key: string) => any
-
-/**
- * @param [string] key to store value under
- * @param [any] value stored under key
- * @param [DurationOptions] time duration to store value under key
- * @returns [void]
- */
-export type SetFn = (key: string, value: any, time?: DurationOptions) => void
-
-/**
- * @param [string] key to delete value from
- * @returns [void]
- */
-export type DelFn = (key: string) => void
-
-/**
- * @return [void] clear all keys from cache
- */
-export type ClearFn = () => void
-
-/**
- * @return [string[]] all keys in cache
- */
-export type KeysFn = () => string[]
-
-export type SizeFn = () => number
-
-export type LRUFn = () =>  CacheItem | undefined
-
-export type MRUFn = () => CacheItem | undefined
-
-export interface cacheInstance {
-  ttl: number | undefined
-  getTime: GetTimeFn
-  get: GetFn
-  set: SetFn
-  del: DelFn
-  clear: ClearFn
-  keys: KeysFn
-  size: SizeFn
-  lru: LRUFn
-  mru: MRUFn
+export interface CacheOptions {
+  duration?: DurationOptions;
+  max?: number;
+  strategy?: 'lru' | 'mru';
 }
 
-export type CacheOptions = {
-  duration?: DurationOptions
-  max?: number
-  strategy?: 'lru' | 'mru'
+export interface CacheInstance {
+  ttl: number | undefined;
+  getTime(): number;
+  get<T>(key: string): T | undefined;
+  set<T>(key: string, value: T, time?: DurationOptions): void;
+  del(key: string): void;
+  clear(): void;
+  keys(): string[];
+  size(): number;
+  lru<T = unknown>(): CacheItem<T> | undefined;
+  mru<T = unknown>(): CacheItem<T> | undefined;
 }
 
-declare class Cache {
-  constructor(options?: CacheOptions)
-  ttl: number | undefined
-  getTime: GetTimeFn
-  get: GetFn
-  set: SetFn
-  del: DelFn
-  clear: ClearFn
-  keys: KeysFn
-  size: SizeFn
-  lru: LRUFn
-  mru: MRUFn
-}
+declare function cache(opts?: CacheOptions): CacheInstance;
 
-declare function Cache(): cacheInstance
-
-declare function Cache(options: CacheOptions): cacheInstance
-
-export default Cache
-
-// @ts-ignore
-export = Cache
+export { cache };
+export default cache;
