@@ -23,17 +23,16 @@ pnpm install @dancastillo/cache
 
 ```js
 // ESM
-import Cache from '@dancastillo/cache'
-const cache = new Cache()
-cache.set('foo', 'bar')
+import cache from '@dancastillo/cache'
+const c = cache()
+c.set('foo', 'bar')
 ```
 
 ```js
 // CommonJs
-const Cache = require('@dancastillo/cache')
-const cache = Cache()
-
-cache.set('foo', 'bar')
+const cache = require('@dancastillo/cache')
+const c = cache()
+c.set('foo', 'bar')
 ```
 
 ## Configuration

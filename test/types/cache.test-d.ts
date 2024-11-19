@@ -1,47 +1,55 @@
-import { expectAssignable, expectType } from 'tsd';
-import cache,  { ClearFn, DelFn, GetFn, GetTimeFn, KeysFn, LRUFn, MRUFn, CacheOptions, SetFn, SizeFn, CacheItem, DurationOptions } from '../../cache.js'
-import { cacheInstance } from '../../cache.js'
+import { expectType, expectError } from 'tsd';
+import cache, { CacheInstance, CacheOptions, CacheItem, DurationOptions } from '../../cache.js';
 
-const testCache = cache()
+// Test cache initialization
+expectType<CacheInstance>(cache());
+expectType<CacheInstance>(cache({ max: 10, strategy: 'lru' }));
+expectError(cache({ strategy: 'unknown' })); // Invalid strategy
 
-expectType<cacheInstance>(testCache)
+// Test CacheInstance methods and properties
+const myCache = cache({ duration: { hours: 1 }, max: 50 });
+expectType<number | undefined>(myCache.ttl);
+expectType<number>(myCache.getTime());
 
-expectAssignable<CacheOptions>({})
-expectAssignable<CacheOptions>({ duration: {} })
-expectAssignable<CacheOptions>({ duration: { days: 1 } })
-expectAssignable<CacheOptions>({ duration: { hours: 1 } })
-expectAssignable<CacheOptions>({ duration: { minutes: 1 } })
-expectAssignable<CacheOptions>({ duration: { seconds: 1 } })
-expectAssignable<CacheOptions>({ duration: { days: 1, hours: 1, minutes: 1, seconds: 1 } })
-expectAssignable<CacheOptions>({ max: 1 })
-expectAssignable<CacheOptions>({ strategy: 'lru' })
+// Test set and get with generic types
+myCache.set<string>('key1', 'value1');
+expectType<string | undefined>(myCache.get<string>('key1'));
 
-// Functions on instance
-expectType<GetTimeFn>(testCache.getTime)
-expectType<GetFn>(testCache.get)
-expectType<SetFn>(testCache.set)
-expectType<DelFn>(testCache.del)
-expectType<ClearFn>(testCache.clear)
-expectType<KeysFn>(testCache.keys)
-expectType<SizeFn>(testCache.size)
-expectType<LRUFn>(testCache.lru)
-expectType<MRUFn>(testCache.mru)
+// Test set and get without generics
+myCache.set('key2', 42);
+expectType<unknown | undefined>(myCache.get('key2'));
 
-const exampleItem: CacheItem = {
-  value: 'test',
-  expires: 123456789
-}
-const key = 'lookupKey'
-const { value, expires } = exampleItem
-const durationOptions: DurationOptions = { days: 1, hours: 1, minutes: 1, seconds: 1 }
+// Test setting expiration
+myCache.set('key3', 'value3', { days: 1 });
+expectError(myCache.set('key4', 'value4', { invalid: 1 })); // Invalid DurationOptions
 
-expectAssignable<CacheItem>(exampleItem)
-expectAssignable<GetTimeFn>(() => exampleItem.expires)
-expectAssignable<GetFn>(() => exampleItem)
-expectAssignable<SetFn>((key, value) => undefined)
-expectAssignable<SetFn>((key, value, durationOptions) => undefined)
-expectAssignable<DelFn>((key) => undefined)
-expectAssignable<ClearFn>(() => undefined)
-expectAssignable<SizeFn>(() => 10)
-expectAssignable<LRUFn>(() => exampleItem)
-expectAssignable<MRUFn>(() => exampleItem)
+// Test deleting and clearing cache
+expectType<void>(myCache.del('key1'));
+expectType<void>(myCache.clear());
+
+// Test cache metadata methods
+expectType<string[]>(myCache.keys());
+expectType<number>(myCache.size());
+expectType<CacheItem<unknown> | undefined>(myCache.lru());
+expectType<CacheItem<unknown> | undefined>(myCache.mru());
+
+// Test invalid cache options
+expectError(cache({ max: 'invalid' })); // `max` should be a number
+expectError(cache({ duration: 'invalid' })); // `duration` should be a DurationOptions object
+let invalidOptions: CacheOptions;
+expectError(invalidOptions = { invalid: 1 }); // Invalid CacheOptions property
+expectError(invalidOptions = { strategy: 'lru', invalid: 1 }); // Invalid CacheOptions property
+
+// Test CacheItem type
+const item: CacheItem<string> = { value: 'test', expires: Date.now() };
+expectType<string>(item.value);
+expectType<number>(item.expires);
+
+// Test DurationOptions type
+const duration: DurationOptions = { days: 1, hours: 5, minutes: 30, seconds: 10 };
+expectType<number | undefined>(duration.days);
+expectType<number | undefined>(duration.hours);
+expectType<number | undefined>(duration.minutes);
+expectType<number | undefined>(duration.seconds);
+let invalidDuration: DurationOptions;
+expectError(invalidDuration = { invalid: 1 }); // Invalid DurationOptions property
