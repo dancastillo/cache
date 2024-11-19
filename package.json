@@ -1,6 +1,6 @@
 {
   "name": "@dancastillo/cache",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": false,
   "description": "In memory cache for node.js",
   "type": "module",
